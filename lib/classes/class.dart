@@ -9,7 +9,6 @@ class AallCountris {
   late String timezone;
   getdata() async {
     //  عمل متغير ووضع قيمته في وقت لاحق
-
     Response response = await get(
         Uri.parse('http://worldtimeapi.org/api/timezone/Africa/Cairo'));
     // تخزين الجيسون بداخل متغير عام عبارة عن ماب
@@ -30,7 +29,7 @@ class AallCountris {
     // تحديد شكل ظهور الوقت عن طريق بكاكيدج الوقت انتل وتخزينها داخل استرينج
     timenow = DateFormat('hh :mm a').format(realimee);
     // تخزين التايم زون داخل متغير استرينج
-     timezone = receivedData["timezone"];
+    timezone = receivedData["timezone"];
     // فتح الصفحة التاليه مع ارسال الداتا للصفحة التاليه
   }
 }
