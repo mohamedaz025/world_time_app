@@ -29,7 +29,16 @@ class _HomeState extends State<Home> {
             children: [
               ElevatedButton.icon(
                 onPressed: () async {
-                  dynamic result = await Navigator.pushNamed(context, '/location');
+                  dynamic result =
+                      await Navigator.pushNamed(context, '/location');
+                  print(result);
+                  setState(() {
+                    datafromloding = {
+                      "timenow": result["time"],
+                      "timezone": result["location"],
+                      "isdaytime": result["isdaytime"]
+                    };
+                  });
                 },
                 icon: Icon(
                   Icons.edit_location,

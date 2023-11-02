@@ -25,7 +25,13 @@ class _LocationState extends State<Location> {
               padding: const EdgeInsets.all(8.0),
               child: Card(
                 child: ListTile(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pop(context, {
+                      "time": "01:30 am",
+                      "location": "Tunis",
+                      "isdaytime": true
+                    });
+                  },
                   title: Text(
                     "egypt - cairo",
                     style: TextStyle(fontSize: 35, color: Colors.black),
