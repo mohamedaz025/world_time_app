@@ -10,11 +10,12 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  Map data = {};
   @override
   Widget build(BuildContext context) {
     // استقبال الداتا من الاسكرين السابقة ووضعها داخل متغير
-    Map datafromloding = ModalRoute.of(context)!.settings.arguments as Map;
-    String bgimg = datafromloding["isdaytime"] ? "day.png" : "night.png";
+     data = data.isEmpty? ModalRoute.of(context)!.settings.arguments as Map: data;
+    String bgimg = data["isdaytime"] ? "day.png" : "night.png";
 
     return Scaffold(
       body: Container(
@@ -33,7 +34,7 @@ class _HomeState extends State<Home> {
                       await Navigator.pushNamed(context, '/location');
                   print(result);
                   setState(() {
-                    datafromloding = {
+                    data = {
                       "timenow": result["time"],
                       "timezone": result["location"],
                       "isdaytime": result["isdaytime"]
@@ -68,7 +69,7 @@ class _HomeState extends State<Home> {
                   children: [
                     Text(
                       //  استدعاء الداتا المستدعاة من صفحه الخري اذاكانت بداخل ماب
-                      datafromloding["timenow"],
+                      data["timenow"],
                       style: TextStyle(fontSize: 35, color: Colors.white),
                     ),
                     SizedBox(
@@ -76,7 +77,7 @@ class _HomeState extends State<Home> {
                     ),
                     Text(
                       //  استدعاء الداتا المستدعاة من صفحه الخري اذاكانت بداخل ماب
-                      datafromloding["timezone"],
+                      data["timezone"],
                       style: TextStyle(fontSize: 35, color: Colors.white),
                     ),
                   ],
